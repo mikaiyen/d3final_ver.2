@@ -44,8 +44,10 @@ function main(data){
     var width = 300;
     var height = 300;
     var radius = Math.min(width, height) / 2;
-    var colors = d3.schemeCategory10;
- 
+    var colors    = ['#FF8C8C','#8CFF8C','#8CFFFF','#CE8CFF'];
+    colors=colors.concat(d3.schemeCategory10);  //免得顏色不夠用
+    console.log(colors)
+  
     var svg = d3.select("#chart")
         .append("svg")
         .attr("width", width)
@@ -147,6 +149,7 @@ function main(data){
                     .attr("text-anchor", "middle")
                     .attr("x", centroid[0])
                     .attr("y", centroid[1])
+                    .attr("font-variant","small-caps")//字體
                     .text(function() {
                         return d.data.property+': \r'+Math.floor((d.data.values*100))+"%"; //Math.floor()是因為有時候資料的小數點不知為啥會爆開
                     });
